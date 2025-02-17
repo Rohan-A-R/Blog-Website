@@ -11,45 +11,57 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link href="{% static 'css/blog.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 <body>
     <div class="container">
       <header class="blog-header py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
-          <div class="col-4 pt-1">
-            <a class="blog-header-logo text-dark" href="/">Django Blog</a>
-          </div>
-          <div class="col-4">
-            <form action="{% url 'search' %}" method="get" class="d-flex justify-content-center">
-              <div class="input-group shadow-sm w-100" style="max-width: 500px;">
-                  <span class="input-group-text bg-white border-warning">
-                      <i class="bi bi-search text-primary"></i>
-                  </span>
-                  <input 
-                      class="form-control border-warning shadow-lg" 
-                      type="text" 
-                      name="keyword" 
-                      placeholder="Search..." 
-                      aria-label="Search"
-                      required 
-                      value="{{ keyword }}"
-                  />
-                  <button type="submit" class="btn btn-warning px-4">Go!</button>
-              </div>
-          </form>
-          </div>
-          <div class="col-4 d-flex justify-content-end align-items-center">
-            {% if not user.is_authenticated %}
-            <a class="btn btn-sm btn-warning" href="{% url 'login' %}">Login</a> &nbsp;
-            <a class="btn btn-sm btn-outline-secondary" href="{% url 'register' %}">Register</a>
-            {% else %}
-            <span>You are logged in as {{ user }}</span>
-            &ensp;
-            <span><a href="{% url 'logout' %}">Logout</a></span>
-            {% endif %}
-          </div>
+            <!-- Logo Section -->
+            <div class="col-4 pt-1">
+                <a class="blog-header-logo text-dark fw-bold fs-5" href="/">Django Blog</a>
+            </div>
+    
+            <!-- Search Bar -->
+            <div class="col-4">
+                <form action="{% url 'search' %}" method="get" class="d-flex justify-content-center">
+                    <div class="input-group shadow-sm w-100" style="max-width: 450px;">
+                        <span class="input-group-text bg-white border-warning">
+                            <i class="bi bi-search text-primary"></i>
+                        </span>
+                        <input 
+                            class="form-control border-warning" 
+                            type="text" 
+                            name="keyword" 
+                            placeholder="Search..." 
+                            aria-label="Search"
+                            required 
+                            value="{{ keyword }}"
+                        />
+                        <button type="submit" class="btn btn-warning px-3">Go</button>
+                    </div>
+                </form>
+            </div>
+    
+            <!-- User Authentication & Actions -->
+            <div class="col-4 d-flex justify-content-end align-items-center">
+                {% if not user.is_authenticated %}
+                    <a class="btn btn-sm btn-warning" href="{% url 'login' %}">Login</a>
+                    &ensp;
+                    <a class="btn btn-sm btn-outline-success ms-2" href="{% url 'register' %}">Register</a>
+                {% else %}
+                    <div class="d-flex align-items-center gap-3">
+                        <span><strong>{{ user }}</strong></span>
+                        &ensp;
+                        <a href="{% url 'dashboard' %}" class="btn btn-outline-success btn-sm">Dashboard</a>
+                        &ensp;
+                        <a href="{% url 'logout' %}" class="btn btn-outline-danger btn-sm">Logout</a>
+                    </div>
+                {% endif %}
+            </div>
         </div>
-      </header>
+    </header>
+    
 
       <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">

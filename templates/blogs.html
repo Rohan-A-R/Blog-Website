@@ -20,8 +20,15 @@
                 <figure class="mb-4"><img class="img-fluid rounded" src="{{ single_blog.featured_image.url }}" alt="..." /></figure>
                 <!-- Post content-->
                 <section class="mb-5">
-                    <p class="fs-5 mb-4">{{ single_blog.short_description }}</p>
-                    <p class="fs-5 mb-4">{{ single_blog.blog_body }}</p>
+                    <blockquote class="blockquote text-center px-4 py-3 border-start border-4 border-primary bg-light shadow-sm">
+                        <p class="fs-4 fw-semibold text-primary fst-italic">{{ single_blog.short_description }}</p>
+                    </blockquote>
+                    
+                    <p class="fs-5 lh-lg text-dark mt-4 px-3" style="text-align: justify;">
+                        {{ single_blog.blog_body }}
+                    </p>
+                    
+                    
                     </section>
             </article>
         </div>
