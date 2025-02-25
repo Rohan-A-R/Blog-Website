@@ -6,7 +6,7 @@
         <a href="{% url 'categories' %}" class="nav-link text-dark {% if request.path == '/dashboard/categories/' or request.path == '/categories/' %}bg-warning{% endif %}">
             Categories
         </a>
-        <a href="" class="nav-link text-dark" >Posts</a>
+        <a href="{% url 'posts' %}" class="nav-link text-dark {% if request.path == '/dashboard/posts/' or request.path == '/posts/' %}bg-warning{% endif %}" >Posts</a>
         <a href="" class="nav-link text-dark" >Logout</a> 
 
         </div>
