@@ -3,6 +3,9 @@
         <a href="{% url 'dashboard' %}" class="nav-link text-dark {% if request.path == '/dashboard/' %}bg-warning{% endif %}">
             Dashboard
         </a>
+        {% if perms.auth.view_user %}
+        <a href="{% url 'users' %}" class="nav-link text-dark {% if request.path == '/dashboard/users/' or request.path == '/users/' %}bg-warning{% endif %}">Users</a>
+        {% endif %}
         <a href="{% url 'categories' %}" class="nav-link text-dark {% if request.path == '/dashboard/categories/' or request.path == '/categories/' %}bg-warning{% endif %}">
             Categories
         </a>
