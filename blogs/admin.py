@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Category,Blog,About, Links
+from . models import Category,Blog,About, Links,Comment
 
 class BlogAdmin(admin.ModelAdmin):
     prepopulated_fields={'slug': ('title',)}
@@ -8,6 +8,7 @@ class BlogAdmin(admin.ModelAdmin):
     list_editable=('is_fetured','status')
 admin.site.register(Category)
 admin.site.register(Blog,BlogAdmin)
+admin.site.register(Comment)
 
 class AboutAdmin(admin.ModelAdmin):
     def has_add_permission(self,request):
